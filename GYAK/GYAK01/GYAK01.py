@@ -45,6 +45,12 @@ def element_wise_sum(input_list_1, input_list_2):
     while idx < min(len(input_list_1), len(input_list_2)):
         sum_list.append(input_list_1[idx]+input_list_2[idx])
         idx +=1
+    if idx<len(input_list_1):
+        for index in range(idx, len(input_list_1)):
+            sum_list.append(input_list_1[index])
+    elif idx<len(input_list_2):
+        for index in range(idx, len(input_list_2)):
+            sum_list.append(input_list_2[index])
     return sum_list
 
 # %%

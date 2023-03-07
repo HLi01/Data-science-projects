@@ -55,8 +55,6 @@ def round_array(input_array: np.array, n: int)->np.array:
 def bool_array(input_array: np.array)->np.array:
     return input_array.astype(bool)
 
-bool_array(np.array([1,0,1],[1,1,1],[0,0,0]))
-
 # %%
 # Készíts egy olyan függvényt, ami a bementként  0 és 1 ből álló tömben a 1 - False-ra az 0 True-ra cserélni
 # Be: [[1, 0, 0], [1, 1, 1],[0, 0, 0]]
@@ -64,7 +62,8 @@ bool_array(np.array([1,0,1],[1,1,1],[0,0,0]))
 # invert_bool_array()
 
 # %%
-
+def invert_bool_array(input_array: np.array)-> np.array:
+    return np.invert(input_array.astype(bool))
 
 # %%
 # Készíts egy olyan függvényt ami a paraméterként kapott array-t kilapítja
@@ -72,4 +71,5 @@ bool_array(np.array([1,0,1],[1,1,1],[0,0,0]))
 # Ki: [1,2,3,4]
 # flatten()
 
-
+def flatten(input_array: np.array)->np.array:
+    return np.ndarray.flatten(input_array)

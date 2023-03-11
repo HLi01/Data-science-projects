@@ -9,12 +9,8 @@ import numpy as np
 
 # %%
 def column_swap(input_array: np.array)-> np.array:
-<<<<<<< HEAD
     input_array[:, 0], input_array[:, 1] = input_array[:, 1], input_array[:, 0].copy()
     return input_array
-=======
-    return input_array[:,[1,0]]
->>>>>>> beca8711e561c34ff9a0dd158e5463807a7bd665
 
 # %%
 #Készíts egy olyan függvényt ami összehasonlít két array-t és adjon vissza egy array-ben, hogy hol egyenlőek 
@@ -24,15 +20,10 @@ def column_swap(input_array: np.array)-> np.array:
 # egyenlő elemszámúakra kell csak hogy működjön
 
 # %%
-<<<<<<< HEAD
 def compare_two_array(input_array1: np.array, input_array2: np.array):
     output_array=np.flatnonzero(input_array1 == input_array2)
     return output_array
 #compare_two_array(np.array([[7,8,9]]),np.array([[7,8,9]])) 
-=======
-def compare_two_array(input_array1: np.array, input_array2: np.array)->np.array:
-    return np.flatnonzero(input_array1 == input_array2)    
->>>>>>> beca8711e561c34ff9a0dd158e5463807a7bd665
 
 # %%
 #Készíts egy olyan függvényt, ami vissza adja a megadott array dimenzióit:
@@ -43,11 +34,7 @@ def compare_two_array(input_array1: np.array, input_array2: np.array)->np.array:
 
 # %%
 def get_array_shape(input_array: np.ndarray)-> str:
-<<<<<<< HEAD
     return f'sor: {input_array.shape[0]}, oszlop: {input_array.shape[1]}, melyseg: {input_array.ndim}'
-=======
-    return f'sor: {input_array.shape[0]}, oszlop: {input_array.shape[1]}, melyseg: {input_array.ndim-1}'
->>>>>>> beca8711e561c34ff9a0dd158e5463807a7bd665
 
 # %%
 # Készíts egy olyan függvényt, aminek segítségével elő tudod állítani egy neurális hálózat tanításához szükséges Y-okat egy numpy array-ből. 
@@ -157,14 +144,9 @@ def list_days(input_date_1, input_date_2):
 # Ki: 2017-03-24 
 
 # %%
-<<<<<<< HEAD
 def get_act_date():
     return np.datetime64('now','D')
 
-=======
-def current_date():
-    return str(np.datetime64('now','D'))
->>>>>>> beca8711e561c34ff9a0dd158e5463807a7bd665
 
 # %%
 # Írj egy olyan függvényt ami visszadja, hogy mennyi másodperc telt el 1970 január 01. 00:00:00 óta.
@@ -174,7 +156,7 @@ def current_date():
 
 # %%
 def sec_from_1970():
-    output_delta=np.datetime64('now','s')-np.datetime64('1970-01-01')
+    output_delta=np.datetime64('now','s')-np.datetime64('1970-01-01T02:00')
     return output_delta.astype(int)
 
 

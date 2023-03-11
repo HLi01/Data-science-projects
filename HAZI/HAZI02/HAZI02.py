@@ -9,8 +9,7 @@ import numpy as np
 
 # %%
 def column_swap(input_array: np.array)-> np.array:
-    input_array[:, 0], input_array[:, 1] = input_array[:, 1], input_array[:, 0].copy()
-    return input_array
+    return np.flip(input_array, axis=1)
 
 # %%
 #Készíts egy olyan függvényt ami összehasonlít két array-t és adjon vissza egy array-ben, hogy hol egyenlőek 
@@ -34,7 +33,12 @@ def compare_two_array(input_array1: np.array, input_array2: np.array):
 
 # %%
 def get_array_shape(input_array: np.ndarray)-> str:
-    return f'sor: {input_array.shape[0]}, oszlop: {input_array.shape[1]}, melyseg: {input_array.ndim}'
+    if input_array.ndim == 1:
+        return f'sor: 1, oszlop: {input_array.shape[0]}, melyseg: 1'
+    elif input_array.ndim == 2:
+        return f'sor: {input_array.shape[0]}, oszlop: {input_array.shape[1]}, melyseg: 1'
+    elif input_array.ndim == 3:
+        return f'sor: {input_array.shape[1]}, oszlop: {input_array.shape[2]}, melyseg: {input_array.shape[0]}'
 
 # %%
 # Készíts egy olyan függvényt, aminek segítségével elő tudod állítani egy neurális hálózat tanításához szükséges Y-okat egy numpy array-ből. 

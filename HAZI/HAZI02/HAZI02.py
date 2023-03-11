@@ -153,14 +153,14 @@ def get_act_date():
 
 
 # %%
-# Írj egy olyan függvényt ami visszadja, hogy mennyi másodperc telt el 1970 január 01. 00:00:00 óta.
+# Írj egy olyan függvényt ami visszadja, hogy mennyi másodperc telt el 1970 január 01. 00:02:00 óta.
 # Be: 
 # Ki: másodpercben az idó, int-é kasztolva
 # sec_from_1970()
 
 # %%
 def sec_from_1970():
-    output_delta=np.datetime64('now','s')-np.datetime64('1970-01-01T02:00')
+    output_delta=np.datetime64('now','s')-np.datetime64('1970-01-01T00:02:00')
     return output_delta.astype(int)
 
 

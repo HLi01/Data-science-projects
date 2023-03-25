@@ -117,9 +117,9 @@ függvény neve: add_age
 '''
 
 # %%
-np.random.seed(42)
 def add_age(df_data: pd.DataFrame)->pd.DataFrame:
     df_copy=df_data.copy()
+    np.random.seed(42)
     ages=np.random.randint(18,67,size=len(df_copy))
     df_copy['age']=ages
     return df_copy

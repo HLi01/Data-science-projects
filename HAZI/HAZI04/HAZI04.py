@@ -167,7 +167,7 @@ függvény neve: add_grade
 def add_grade(df_data:pd.DataFrame)->pd.DataFrame:
     df_copy = df_data.copy()
     grades = (df_copy['math score']+df_copy['reading score']+df_copy['writing score'])/300    
-    df_copy['grade'] = pd.cut(grades, bins = [0, 0.6,0.7,0.8,0.9,1], right=False, labels=['F','D','C','B','A'])
+    df_copy['grade'] = pd.cut(grades, bins = [0, 0.6,0.7,0.8,0.9,1], right=True, labels=['F','D','C','B','A'])
     return df_copy
 #add_grade(df)
 
@@ -190,9 +190,8 @@ függvény neve: math_bar_plot
 def math_bar_plot(df_data:pd.DataFrame)->plt.figure:
     df_copy=df_data.copy()
     group=df_copy.groupby('gender')['math score'].mean()
-    plt.xlabel('Gender')
-    plt.ylabel('Math Score')
-    fig=group.plot(kind='bar', title='Average Math Score by Gender')
+    fig,ax = plt.subplots() 
+    fig=group.plot.bar(title='Average Math Score by Gender',ylabel='Math Score', xlabel='Gender',ax=ax,fig=fig)
     return fig
 #math_bar_plot(df)
 
@@ -214,10 +213,8 @@ függvény neve: writing_hist
 # %%
 def writing_hist(df_data: pd.DataFrame)->plt.figure:
     df_copy=df_data.copy()
-    fig=df_copy.hist(column='writing score')
-    plt.xlabel('Writing Score')
-    plt.ylabel('Number of Students')
-    plt.title('Distribution of Writing Scores')
+    fig, ax = plt.subplots()
+    fig=df_copy.plot.hist(column='writing score',xlabel='Writing Score',ylabel='Number of Students',title='Distribution of Writing Scores',ax=ax,fig = fig)
     return fig
 #writing_hist(df)
 
@@ -240,8 +237,9 @@ függvény neve: ethnicity_pie_chart
 def ethnicity_pie_chart(df_data:pd.DataFrame)->plt.figure:
     df_copy=df_data.copy()
     group = df_copy.groupby('race/ethnicity')['race/ethnicity'].count()
-    plot = group.plot.pie(y='race/ethnicity',title='Proportion of Students by Race/Ethnicity',autopct='%1.1f%%')
-    return plot
+    fig,ax = plt.subplots()
+    fig=group.plot.pie(title='Proportion of Students by Race/Ethnicity',autopct='%1.1f%%',fig = fig,ax=ax)
+    return fig
 #ethnicity_pie_chart(df)
 
 

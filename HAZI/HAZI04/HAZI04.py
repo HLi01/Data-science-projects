@@ -166,8 +166,8 @@ függvény neve: add_grade
 # %%
 def add_grade(df_data:pd.DataFrame)->pd.DataFrame:
     df_copy = df_data.copy()
-    grades = (df_copy['math score']+df_copy['reading score']+df_copy['writing score'])/300    
-    df_copy['grade'] = pd.cut(grades, bins = [0, 0.6,0.7,0.8,0.9,1], right=True, labels=['F','D','C','B','A'])
+    grades = (df_copy['math score']+df_copy['reading score']+df_copy['writing score'])/3
+    df_copy['grade'] = pd.cut(grades, bins = [0,60,70,80,90,100], labels=['F','D','C','B','A'])
     return df_copy
 #add_grade(df)
 
@@ -189,9 +189,12 @@ függvény neve: math_bar_plot
 # %%
 def math_bar_plot(df_data:pd.DataFrame)->plt.figure:
     df_copy=df_data.copy()
-    group=df_copy.groupby('gender')['math score'].mean()
-    fig,ax = plt.subplots() 
-    fig=group.plot.bar(title='Average Math Score by Gender',ylabel='Math Score', xlabel='Gender',ax=ax,fig=fig)
+    group = df_copy.groupby('gender')['math score'].mean()
+    fig, ax = plt.subplots()
+    ax.bar(group.index, group.values)
+    ax.set_title("Average Math Score by Gender")
+    ax.set_xlabel('Gender')
+    ax.set_ylabel('Math Score')
     return fig
 #math_bar_plot(df)
 
@@ -214,7 +217,10 @@ függvény neve: writing_hist
 def writing_hist(df_data: pd.DataFrame)->plt.figure:
     df_copy=df_data.copy()
     fig, ax = plt.subplots()
-    fig=df_copy.plot.hist(column='writing score',xlabel='Writing Score',ylabel='Number of Students',title='Distribution of Writing Scores',ax=ax,fig = fig)
+    ax.set_title('Distribution of Writing Scores')
+    ax.set_xlabel('Writing Score')
+    ax.set_ylabel('Number of Students')
+    ax.hist(df_copy['writing score'])
     return fig
 #writing_hist(df)
 
@@ -236,9 +242,12 @@ függvény neve: ethnicity_pie_chart
 # %%
 def ethnicity_pie_chart(df_data:pd.DataFrame)->plt.figure:
     df_copy=df_data.copy()
-    group = df_copy.groupby('race/ethnicity')['race/ethnicity'].count()
-    fig,ax = plt.subplots()
-    fig=group.plot.pie(title='Proportion of Students by Race/Ethnicity',autopct='%1.1f%%',fig = fig,ax=ax)
+    fig, ax = plt.subplots()
+    group = df_copy.groupby("race/ethnicity")["race/ethnicity"].count()
+    ax.set_title("Proportion of Students by Race/Ethnicity")
+    labels = group.index
+    values = group.values
+    ax.pie(values, labels = labels, autopct='%1.1f%%')
     return fig
 #ethnicity_pie_chart(df)
 
